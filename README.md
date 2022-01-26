@@ -31,3 +31,8 @@ asciidoctor-pdf ./output/index.adoc
 ```bash
 asciidoctor-pdf -a pdf-style=themes/basic-theme.yml -a pdf-fontsdir=fonts/ ./output/index.adoc -D ./output
 ```
+### 三、脚本自动化执行
+```bash
+sh swagger2pdf-cli.sh  
+Usage: swagger2pdf-cli.sh -url http://localhost/swagger.json [-type pdf|html, default=pdf]
+```

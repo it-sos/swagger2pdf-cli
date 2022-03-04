@@ -60,11 +60,27 @@ include::paths.adoc[]
 include::definitions.adoc[]
 EOF
 
+case $(uname) in
+Linux)
+  sed -i "s/<br\/>/ +\n/g" ./output/paths.adoc
+  sed -i "s/<br\/>/ +\n/g" ./output/overview.adoc
+  sed -i "s/<br\/>/ +\n/g" ./output/definitions.adoc
+  ;;
+Darwin)
+  sed -i "" 's#<br\/># +\
+#g' ./output/paths.adoc
+  sed -i "" 's#<br\/># +\
+#g' ./output/overview.adoc
+  sed -i "" 's#<br\/># +\
+#g' ./output/definitions.adoc
+  ;;
+esac
+
 case $type in
     html)
         asciidoctor ./output/index.adoc -D ./output
         ;;
-    *)
+    pdf)
         asciidoctor-pdf -a pdf-style=themes/basic-theme.yml -a pdf-fontsdir=fonts/ ./output/index.adoc -D ./output
         ;;
 esac
